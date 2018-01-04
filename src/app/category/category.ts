@@ -19,8 +19,8 @@ export const CATEGORY_TOKEN = new InjectionToken('category token');
     encapsulation: ViewEncapsulation.None
 })
 export class CategoryComponent extends MeepoCache {
-    @Input() top: number = 0;
-    @Input() bottom: number = 55;
+    @Input() top: string = '0px';
+    @Input() bottom: string = '55px';
     
     data: any[] = [];
     key: string = 'category';
