@@ -5,7 +5,7 @@ import { PermissionsModule } from 'meepo-permissions';
 import { IconsModule } from 'meepo-icons';
 import { CommonModule } from '@angular/common';
 import { StoreModule } from 'meepo-store';
-import { FooterComponent, FOOTER_CONFIG, FooterConfigDefault } from './footer/footer';
+import { CategoryComponent, CATEGORY_TOKEN } from './category/category';
 import { AxiosModule } from 'meepo-axios';
 
 @NgModule({
@@ -20,24 +20,22 @@ import { AxiosModule } from 'meepo-axios';
         AxiosModule
     ],
     exports: [
-        FooterComponent
+        CategoryComponent,
     ],
     declarations: [
-        FooterComponent
+        CategoryComponent,
     ],
     providers: [
     ],
 })
-export class FooterModule {
-    public static forRoot(cfg: FooterConfigDefault): ModuleWithProviders {
+export class CategoryModule {
+    public static forRoot(url: string): ModuleWithProviders {
         return {
-            ngModule: FooterModule,
-            providers: [
-                {
-                    provide: FOOTER_CONFIG,
-                    useValue: cfg
-                }
-            ]
+            ngModule: CategoryModule,
+            providers: [{
+                provide: CATEGORY_TOKEN,
+                useValue: url
+            }]
         }
     }
 }

@@ -1,0 +1,15 @@
+<div class="category-container">
+    <div class="category-slide">
+        <ul>
+            <li (click)="_activeSlide(item)" [class.on]="item.active === 'on'" *ngFor="let item of data">{{item.title}}</li>
+        </ul>
+    </div>
+    <div class="category-main">
+        <ng-container *ngIf="template">
+            <ng-container *ngFor="let item of items">
+                <ng-container *ngTemplateOutlet="template;context: {$implicit: item}"></ng-container>
+            </ng-container>
+        </ng-container>
+    </div>
+</div>
+<ng-content></ng-content>
