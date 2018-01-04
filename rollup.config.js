@@ -265,7 +265,7 @@ switch (target) {
 
 export default {
     exports: 'named',
-    name: 'meepo-footer',
+    name: 'meepo-category',
     plugins,
     external: Object.keys(globals),
     globals,
