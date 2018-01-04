@@ -6,7 +6,7 @@
             </ng-container>
         </ul>
     </div>
-    <div class="category-main">
+    <div class="category-main" [style.height]="'calc( 100% - '+ bottom +' - '+ top +')'">
         <ng-container *ngIf="template">
             <ng-container *checks="let item of items">
                 <ng-container *ngTemplateOutlet="template;context: {$implicit: item}"></ng-container>
