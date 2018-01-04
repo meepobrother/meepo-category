@@ -1,5 +1,5 @@
 <div class="category-container">
-    <div class="category-slide">
+    <div class="category-slide" [style.height]="'calc( 100% - '+ (bottom + top) +')'">
         <ul>
             <ng-container *checks="let item of data">
                 <li (click)="_activeSlide(item)" *ngIf="item.permission" [class.on]="item.active === 'on'">{{item.title}}</li>
