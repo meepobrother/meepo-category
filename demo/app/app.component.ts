@@ -3,7 +3,7 @@ import {
   ViewChild, ElementRef, ChangeDetectorRef
 } from '@angular/core';
 import { EventService } from 'meepo-event';
-
+import { CategoryComponent } from '../../src/app/app';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -11,13 +11,20 @@ import { EventService } from 'meepo-event';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent {
+  @ViewChild('category') category: CategoryComponent;
   constructor(
     public event: EventService
   ) {
     let now = new Date();
-
     let version = new Date(now.getFullYear(), now.getMonth() + 1, now.getDate()).getTime();
     this.event.checkVersion(version);
+  }
+
+  setItem(item: any) {
+    this.category.addHistory(item);
+    if(item.link){
+      
+    }
   }
 
   test() {

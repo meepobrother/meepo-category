@@ -3,39 +3,39 @@
     "info": [
         {
             "title": "分类1",
-            "role": "all",
+            "role": "admin",
             "active": "on",
             "children": [
                 {
-                    "title": "名称",
+                    "title": "名称1",
                     "items": [
                         {
-                            "title": "标题",
+                            "title": "标题1",
                             "image": ""
                         },
                         {
-                            "title": "标题",
+                            "title": "标题2",
                             "image": ""
                         },
                         {
-                            "title": "标题",
+                            "title": "标题3",
                             "image": ""
                         }
                     ]
                 },
                 {
-                    "title": "名称",
+                    "title": "名称2",
                     "items": [
                         {
-                            "title": "标题",
+                            "title": "标题2",
                             "image": ""
                         },
                         {
-                            "title": "标题",
+                            "title": "标题2",
                             "image": ""
                         },
                         {
-                            "title": "标题",
+                            "title": "标题2",
                             "image": ""
                         }
                     ]
@@ -48,10 +48,10 @@
             "active": "off",
             "children": [
                 {
-                    "title": "名称",
+                    "title": "名称2",
                     "items": [
                         {
-                            "title": "标题",
+                            "title": "标题2",
                             "image": ""
                         },
                         {

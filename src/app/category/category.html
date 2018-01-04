@@ -1,12 +1,14 @@
 <div class="category-container">
     <div class="category-slide">
         <ul>
-            <li (click)="_activeSlide(item)" [class.on]="item.active === 'on'" *ngFor="let item of data">{{item.title}}</li>
+            <ng-container *checks="let item of data">
+                <li (click)="_activeSlide(item)" *ngIf="item.permission" [class.on]="item.active === 'on'">{{item.title}}</li>
+            </ng-container>
         </ul>
     </div>
     <div class="category-main">
         <ng-container *ngIf="template">
-            <ng-container *ngFor="let item of items">
+            <ng-container *checks="let item of items">
                 <ng-container *ngTemplateOutlet="template;context: {$implicit: item}"></ng-container>
             </ng-container>
         </ng-container>

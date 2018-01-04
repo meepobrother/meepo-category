@@ -7,7 +7,7 @@ import { CommonModule } from '@angular/common';
 import { StoreModule } from 'meepo-store';
 import { CategoryComponent, CATEGORY_TOKEN } from './category/category';
 import { AxiosModule } from 'meepo-axios';
-
+import { IsOnDirective } from './category/isOn';
 @NgModule({
     imports: [
         EventModule.forRoot(),
@@ -21,9 +21,11 @@ import { AxiosModule } from 'meepo-axios';
     ],
     exports: [
         CategoryComponent,
+        IsOnDirective
     ],
     declarations: [
         CategoryComponent,
+        IsOnDirective
     ],
     providers: [
     ],
@@ -39,4 +41,6 @@ export class CategoryModule {
         }
     }
 }
+
+export { CategoryComponent, CATEGORY_TOKEN } from './category/category';
 
