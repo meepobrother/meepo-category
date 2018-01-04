@@ -21,10 +21,12 @@ export const CATEGORY_TOKEN = new InjectionToken('category token');
 export class CategoryComponent extends MeepoCache {
     @Input() top: string = '0px';
     @Input() bottom: string = '55px';
-    
+
     data: any[] = [];
     key: string = 'category';
     historys: any[] = [];
+    max: number = 8;
+    maxHis: number = 1;
     // 当前记录
     items: any[] = [];
     @ContentChild('ref') template: TemplateRef<any>;
@@ -52,35 +54,30 @@ export class CategoryComponent extends MeepoCache {
         this.historys.map(item => {
             if (item.title === title) {
                 has = true;
-                let exist = item.items.indexOf(history);
-                if (exist >= 0) { } else {
-                    item.items = [...item.items, ...history]
+                item.items = [history, ...item.items];
+                if (item.items.length > 8) {
+                    item.items = item.items.splice(0, this.max);
                 }
             }
         });
         if (!has) {
-            this.historys.push({
+            this.historys.unshift({
                 title: title,
                 items: [history]
             });
         }
+        this.historys = this.historys.splice(0, this.maxHis);
         this.store.set(this.key + '.historys', this.historys);
     }
 
 
     meepoInit() {
         this.historys = this.store.get(this.key + '.historys', this.historys);
-        this.items = this.historys;
         if (this.data && this.util.isArray(this.data) && this.data.length > 0) {
-            this.data.map(res => {
-                res.active = 'off';
-            });
+
         } else {
             this.axios.get(this.cfg).subscribe((res: any) => {
                 let data = res.info;
-                data.map(res => {
-                    res.active = 'off';
-                });
                 this.updateCache(data);
             });
         }
@@ -97,8 +94,6 @@ export class CategoryComponent extends MeepoCache {
             res.active = 'off';
         });
         item.active = 'on';
-        this._setActive(item);
         this.updateCache(datas);
     }
-
 }

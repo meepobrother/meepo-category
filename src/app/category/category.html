@@ -2,12 +2,15 @@
     <div class="category-slide" [style.height]="'calc( 100% - '+ bottom +' - '+ top +')'">
         <ul>
             <ng-container *checks="let item of data">
-                <li (click)="_activeSlide(item)" *ngIf="item.permission" [class.on]="item.active === 'on'">{{item.title}}</li>
+                <li [isOn]="item.active === 'on' && item.permission" (isOnChange)="_setActive(item)" (click)="_activeSlide(item)" *ngIf="item.permission" [class.on]="item.active === 'on'">{{item.title}}</li>
             </ng-container>
         </ul>
     </div>
     <div class="category-main" [style.height]="'calc( 100% - '+ bottom +' - '+ top +')'">
         <ng-container *ngIf="template">
+            <ng-container *ngFor="let item of historys">
+                <ng-container *ngTemplateOutlet="template;context: {$implicit: item}"></ng-container>
+            </ng-container>
             <ng-container *checks="let item of items">
                 <ng-container *ngTemplateOutlet="template;context: {$implicit: item}"></ng-container>
             </ng-container>
